@@ -1,5 +1,4 @@
 import 'package:drohealthpharm/provider/product_provider.dart';
-import 'package:drohealthpharm/screens/search_screen.dart';
 import 'package:drohealthpharm/widgets/productGrid_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

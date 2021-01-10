@@ -6,15 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:drohealthpharm/widgets/card_items.dart';
 
 class SearchItems extends StatelessWidget {
-  // final String id;
-  // final String constituent;
-  // final String description;
-  // final double price;
-  // final String image;
-
-  // SearchItems(
-  //     this.id, this.constituent, this.description, this.price, this.image);
-
   final styles = TextStyle(
     fontFamily: 'ProximaNova',
     fontSize: 12.0,

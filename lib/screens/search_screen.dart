@@ -1,7 +1,7 @@
 import 'package:drohealthpharm/provider/product_provider.dart';
+import 'package:drohealthpharm/widgets/search_items.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'search_items.dart';
 import 'package:drohealthpharm/widgets/homeItems_widgets.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -68,20 +68,24 @@ class _SearchScreenState extends State<SearchScreen> {
                   });
                 },
                 decoration: InputDecoration(
-                    hintText: 'Search',
-                    prefixIcon: FlatButton(
-                      child: Icon(Icons.search),
-                      onPressed: () {
-                        setState(() {
-                          updateTitle();
-                        });
-                      },
-                    ),
-                    suffixIcon: Icon(
-                      Icons.clear,
-                    ),
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none),
+                  hintText: 'Search',
+                  prefixIcon: FlatButton(
+                    child: Icon(Icons.search),
+                    onPressed: () {
+                      setState(() {
+                        updateTitle();
+                      });
+                    },
+                  ),
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.clear),
+                    onPressed: () {
+                      _searchController.clear();
+                    },
+                  ),
+                  focusedBorder: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                ),
               ),
             ),
             Expanded(
@@ -105,19 +109,14 @@ class _SearchScreenState extends State<SearchScreen> {
                   //             (_userInput.toLowerCase() ==
                   //                 getUser[i].constituents[3].toLowerCase())
 
+                  //Using a common method to search for items
                   _userInput.contains(RegExp(r'[A-Z]', caseSensitive: false)) ==
                           getUser[i]
                               .constituents
                               .contains(RegExp(r'[A-Z]', caseSensitive: false))
                       ? ChangeNotifierProvider.value(
                           value: getUser[i],
-                          child: SearchItems(
-                              // getUser[i].id,
-                              // getUser[i].constituents,
-                              // getUser[i].description,
-                              // getUser[i].price,
-                              // getUser[i].image
-                              ),
+                          child: SearchItems(),
                         )
                       : Container(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -171,7 +170,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       child: Text(
                         _count == null || _userInput.isEmpty
                             ? '0 items'
-                            : '$_count Item(s)',
+                            : '$_count',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 13.0,

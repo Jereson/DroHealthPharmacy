@@ -2,7 +2,6 @@ import 'package:drohealthpharm/home_screen.dart';
 import 'package:drohealthpharm/models/product.dart';
 import 'package:drohealthpharm/screens/my_bag.dart';
 import 'package:drohealthpharm/screens/product_detail.dart';
-import 'package:drohealthpharm/screens/search_items.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -11,7 +10,6 @@ import './provider/product_provider.dart';
 import 'package:drohealthpharm/screens/product_overview.dart';
 
 import 'models/bag.dart';
-import 'screens/search_screen.dart';
 
 void main() {
   runApp(MyApp());

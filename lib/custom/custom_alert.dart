@@ -199,15 +199,6 @@ class _RichAlertDialogState extends State<RichAlertDialog> {
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
-              // var _bag = Provider.of<Bag>(context, listen: false);
-              // var _product = Provider.of<Product>(context, listen: false);
-              // _bag.addItem(
-              //   _product.id,
-              //   _product.title,
-              //   _product.constituents,
-              //   _product.price,
-              //   _product.image,
-              // );
               Navigator.of(context).pushNamed(MyBag.routName);
             },
           ),
@@ -246,7 +237,7 @@ Text richTitle(String title) {
 Text richSubtitle(String subtitle) {
   return Text(
     subtitle,
-    style: TextStyle(fontSize: 12.0),
+    style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
   );
 }
 

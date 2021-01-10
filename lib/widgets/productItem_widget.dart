@@ -23,9 +23,9 @@ class ProductItemWidget extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           _bag.addItem(
-            _product.id,
-            _product.title,
             _product.constituents,
+            _product.title,
+            _product.id,
             _product.price,
             _product.image,
           );

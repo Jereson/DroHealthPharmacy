@@ -97,7 +97,7 @@ class _ProductDetailState extends State<ProductDetail> {
               ),
               SizedBox(height: 18.0),
               Text(
-                _loadProduct.title,
+                _loadProduct.constituents,
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w600,
@@ -105,7 +105,7 @@ class _ProductDetailState extends State<ProductDetail> {
               ),
               Text(
                 _loadProduct.description,
-                style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600),
               ),
 
               SizedBox(height: 22.0),
@@ -351,7 +351,9 @@ class _ProductDetailState extends State<ProductDetail> {
                 return alert.RichAlertDialog(
                   //uses the custom alert dialog
                   alertTitle: alert.richTitle("Successful"),
-                  alertSubtitle: alert.richSubtitle("j fsgdj ghd "),
+                  alertSubtitle: alert.richSubtitle(
+                    '${_loadProduct.constituents} has bee added to your bag',
+                  ),
                   alertType: alert.RichAlertType.SUCCESS,
                 );
               });

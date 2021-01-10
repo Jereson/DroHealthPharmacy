@@ -14,11 +14,6 @@ class CardItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //     final product = Provider.of<Product>(context);
-
-    // var _bag = Provider.of<Bag>(context, listen: false);
-    // var _product = Provider.of<Product>(context, listen: false);
-
     return Card(
       shadowColor: Colors.grey.withOpacity(0.6),
       elevation: 2.0,
@@ -44,14 +39,14 @@ class CardItems extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  product.id,
+                  product.constituents,
                   style: TextStyle(
                     fontFamily: 'ProximaNova',
                     fontWeight: FontWeight.w700,
                     fontSize: 14.0,
                   ),
                 ),
-                Text(product.constituents, style: styles),
+                Text(product.id, style: styles),
                 Text(
                   product.description,
                   style: styles,

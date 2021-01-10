@@ -93,37 +93,3 @@ Widget bottomSheet(int lenght) {
     ),
   );
 }
-
-void updateQuatityadPrice() {}
-
-Widget button() {}
-
-// class IncreasePriceAndQuatity extends StatefulWidget {
-//   int counter;
-//   int mainCount;
-
-//   @override
-//   _IncreasePriceAndQuatityState createState() => _IncreasePriceAndQuatityState();
-// }
-
-// class _IncreasePriceAndQuatityState extends State<IncreasePriceAndQuatity> {
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       InkWell(
-//     onTap: () {
-//  setState(() {
-//       _counter >= 1 ? _counter-- : _counter = 0;
-//       _mainCount = _mainCount - 1;
-
-//     });
-//     },
-//     child: Icon(
-//       Icons.remove,
-//       color: _counter == 0 ? Colors.grey.withOpacity(0.4) : Colors.black,
-//     ),
-//   );
-//     );
-//   }
-// }
