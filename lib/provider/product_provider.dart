@@ -98,18 +98,4 @@ class ProductProvider with ChangeNotifier {
   Product getProductDetail(String getTitle) {
     return _items.firstWhere((element) => element.title == getTitle);
   }
-
-  // Product getsuer(String getTitle) {
-  //   return _items.firstWhere((element) => element.title[0] == getTitle);
-  // }
-
-  // Product user(String userInput) {
-  //   return _items.firstWhere((element) =>
-  //       element.title.indexOf(RegExp(r'[A-Z][a-z]')) ==
-  //       userInput.indexOf(RegExp(r'[A-Z][a-z]')));
-  // }
-
-  Product userGet(String userInput) {
-    _items.where((p) => p.title[0] == userInput[0]);
-  }
 }
