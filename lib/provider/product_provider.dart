@@ -19,7 +19,7 @@ class ProductProvider with ChangeNotifier {
       id: 'GHEYU7SUHG',
       designId: 'Buffer',
       title: 'Buffer',
-      constituents: 'Collection of Foods',
+      constituents: 'Cooked food',
       description: 'Rich African Food',
       image: 'assets/images/collection.jpg',
       price: 100,
@@ -33,7 +33,7 @@ class ProductProvider with ChangeNotifier {
         constituents: 'Lecithin',
         description: 'Lecithin +B-Vitamine',
         image: 'assets/images/lecithin.jpg',
-        price: 10,
+        price: 80,
         size: '3X10',
         count: 1),
     Product(
@@ -73,7 +73,7 @@ class ProductProvider with ChangeNotifier {
       constituents: 'Fresh Berry',
       description: 'Fruit rich in Vitamin',
       image: 'assets/images/berry.jpg',
-      price: 10,
+      price: 70,
       size: '3X10',
       count: 1,
     ),
@@ -89,10 +89,12 @@ class ProductProvider with ChangeNotifier {
   }
 
   //Search items
-  List<Product> searchItem = List.from(_items);
   searchItems() {
-    searchItem = _items.where((element) => element.id.contains(element.id));
-    notifyListeners();
+    List<Product> searchItem = List.from(_items);
+    searchItem = _items.where((element) =>
+        element.title.contains(RegExp(r'[A-Z]', caseSensitive: false)));
+    return searchItem;
+    // notifyListeners();
   }
 
   Product getProductDetail(String getTitle) {

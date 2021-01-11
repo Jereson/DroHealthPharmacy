@@ -1,4 +1,5 @@
 import 'package:drohealthpharm/models/bag.dart';
+import 'package:drohealthpharm/models/product.dart';
 import 'package:drohealthpharm/provider/product_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,38 +13,27 @@ class ProductDetail extends StatefulWidget {
 }
 
 class _ProductDetailState extends State<ProductDetail> {
-  int _counter = 0;
-  int _mainCount;
-
-  @override
-  void initState() {
-    super.initState();
-    // var _increaseCount = Provider.of<Product>(context, listen: false).count;
-    // _increaseCount = _counter;
-    // _mainCount = _increaseCount + _counter;
-  }
+  int _counter = 1;
 
   @override
   Widget build(BuildContext context) {
-    var _itemCout = Provider.of<Bag>(context, listen: false).itemCount;
-    void updateQuatityadPrice() {
-      setState(() {
-        _counter++;
-        // _mainCount = _mainCount + 1;
-        // _price = _price + _mainCount;
-      });
-    }
-
     //Instances all providers
     final _productTitle = ModalRoute.of(context).settings.arguments as String;
     final _loadProduct = Provider.of<ProductProvider>(
       context,
       listen: false,
     ).getProductDetail(_productTitle);
+    var newUpdate = Provider.of<Bag>(context, listen: false);
+    var totalPrice = newUpdate.updatePrice(_counter);
+    var _itemCout = newUpdate.updateQuantity(_counter);
 
-    var totalPrice = Provider.of<Bag>(context, listen: false).totalAmount;
-
-    //Increase Quantity and price
+    void updateQuatityadPrice() {
+      setState(() {
+        _counter++;
+        totalPrice = totalPrice * _counter;
+        _itemCout = _itemCout + _counter;
+      });
+    }
 
     const _itemSize = TextStyle(
       fontWeight: FontWeight.w600,

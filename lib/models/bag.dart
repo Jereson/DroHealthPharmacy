@@ -8,12 +8,12 @@ class BagItem {
   double price;
   final String image;
   BagItem({
-    @required this.id,
-    @required this.title,
-    @required this.constituent,
-    @required this.quantity,
-    @required this.price,
-    @required this.image,
+    this.id,
+    this.title,
+    this.constituent,
+    this.quantity,
+    this.price,
+    this.image,
   });
 }
 
@@ -29,19 +29,36 @@ class Bag with ChangeNotifier {
     return _items.length;
   }
 
-  //calculate temporary total amount
   double get totalAmount {
     var total = 0.0;
     _items.forEach((key, cartItem) {
       total += cartItem.price * cartItem.quantity;
     });
-
     return total;
   }
 
+  int updateQuantity(int count) {
+    int newQuantity = itemCount + count;
+    return newQuantity;
+  }
+
+  double updatePrice(int count) {
+    double newPrice = totalAmount * count;
+    return newPrice;
+  }
+
+  // upUdateTotalPrice(){
+  //   if()
+  // }
+
   //Add items to bag
-  void addItem(String productId, String title, String constituent, double price,
-      String image) {
+  void addItem(
+    String productId,
+    String title,
+    String constituent,
+    double price,
+    String image,
+  ) {
     if (_items.containsKey(productId)) {
       //If added change qauntity
       _items.update(
@@ -68,11 +85,10 @@ class Bag with ChangeNotifier {
             image: image),
       );
     }
-
     notifyListeners();
   }
 
-//Delete item
+  //Delete item
   void removeItem(String productId) {
     _items.remove(productId);
     notifyListeners();

@@ -17,7 +17,6 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     final getUser = Provider.of<ProductProvider>(context, listen: false).items;
-    // final productData = Provider.of<ProductProvider>(context, listen: false).items;
 
     void updateTitle() {
       _userInput = _searchController.text;
@@ -89,27 +88,12 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
             ),
             Expanded(
-                child: GridView.builder(
+                child:
+                    //Using a common logic to search for items
+                    //without using FutureBuilder
+                    GridView.builder(
               itemCount: getUser.length,
               itemBuilder: (context, i) =>
-                  //     //provide items matching
-                  //     //th full name of item in the cart
-                  //     //or any letter matching one letter containing the
-                  //     //the 1st to 3rd item index
-
-                  //     //Thi is done this way because we are not quering real database
-                  //     ((_userInput.toLowerCase() ==
-                  //                     getUser[i].constituents.toLowerCase()) ||
-                  //                 _userInput.toLowerCase() ==
-                  //                     getUser[i].constituents[0].toLowerCase()) ||
-                  //             (_userInput.toLowerCase() ==
-                  //                 getUser[i].constituents[1].toLowerCase()) ||
-                  //             (_userInput.toLowerCase() ==
-                  //                 getUser[i].constituents[2].toLowerCase()) ||
-                  //             (_userInput.toLowerCase() ==
-                  //                 getUser[i].constituents[3].toLowerCase())
-
-                  //Using a common method to search for items
                   _userInput.contains(RegExp(r'[A-Z]', caseSensitive: false)) ==
                           getUser[i]
                               .constituents
@@ -185,3 +169,20 @@ class _SearchScreenState extends State<SearchScreen> {
         ));
   }
 }
+
+//     //provide items matching
+//     //th full name of item in the cart
+//     //or any letter matching one letter containing the
+//     //the 1st to 3rd item index
+
+//     //Thi is done this way because we are not quering real database
+//     ((_userInput.toLowerCase() ==
+//                     getUser[i].constituents.toLowerCase()) ||
+//                 _userInput.toLowerCase() ==
+//                     getUser[i].constituents[0].toLowerCase()) ||
+//             (_userInput.toLowerCase() ==
+//                 getUser[i].constituents[1].toLowerCase()) ||
+//             (_userInput.toLowerCase() ==
+//                 getUser[i].constituents[2].toLowerCase()) ||
+//             (_userInput.toLowerCase() ==
+//                 getUser[i].constituents[3].toLowerCase())

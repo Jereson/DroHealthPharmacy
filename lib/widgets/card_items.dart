@@ -1,6 +1,5 @@
 import 'package:drohealthpharm/models/product.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class CardItems extends StatelessWidget {
   const CardItems({

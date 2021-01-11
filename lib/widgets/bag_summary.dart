@@ -42,22 +42,7 @@ class _BagSummaryState extends State<BagSummary> {
               width: 75.0,
               child: Row(
                 children: <Widget>[
-                  !_expanded
-                      ? ClipRRect(
-                          borderRadius: BorderRadius.circular(30.0),
-                          child: Container(
-                            height: 50.0,
-                            width: 50.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30.0),
-                            ),
-                            child: Image.asset(
-                              widget.image,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        )
-                      : SizedBox.shrink(),
+                  !_expanded ? clipRrectImage(widget) : SizedBox.shrink(),
                   Spacer(),
                   Text(
                     '${widget.quantity}X',
@@ -84,53 +69,73 @@ class _BagSummaryState extends State<BagSummary> {
             ),
           ),
         ),
-        _expanded
-            ? Container(
-                padding: EdgeInsets.only(right: 10, left: 15.0),
-                height: 50.0,
-                child: Row(
-                  children: <Widget>[
-                    IconButton(
-                      icon: Icon(
-                        Icons.delete_outline,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        Provider.of<Bag>(context, listen: false)
-                            .removeItem(widget.id);
-                      },
-                    ),
-                    Spacer(),
-                    Container(
-                      width: 110,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          const Icon(
-                            Icons.remove_circle,
-                            color: Colors.white,
-                            // size: 38,
-                          ),
-                          Text(
-                            '1',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16.0,
-                            ),
-                          ),
-                          const Icon(
-                            Icons.add_circle,
-                            color: Colors.white,
-                            // size: 30,
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            : SizedBox.shrink()
+        _expanded ? expandedWidget(context, widget) : SizedBox.shrink()
       ],
     );
   }
+}
+
+//Image in ClipRRect
+Widget clipRrectImage(widget) {
+  return ClipRRect(
+    borderRadius: BorderRadius.circular(30.0),
+    child: Container(
+      height: 50.0,
+      width: 50.0,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30.0),
+      ),
+      child: Image.asset(
+        widget.image,
+        fit: BoxFit.fill,
+      ),
+    ),
+  );
+}
+
+//Expanded Widget
+Widget expandedWidget(BuildContext context, widget) {
+  return Container(
+    padding: EdgeInsets.only(right: 10, left: 15.0),
+    height: 50.0,
+    child: Row(
+      children: <Widget>[
+        IconButton(
+          icon: Icon(
+            Icons.delete_outline,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Provider.of<Bag>(context, listen: false).removeItem(widget.id);
+          },
+        ),
+        Spacer(),
+        Container(
+          width: 110,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              const Icon(
+                Icons.remove_circle,
+                color: Colors.white,
+                // size: 38,
+              ),
+              Text(
+                '1',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                ),
+              ),
+              const Icon(
+                Icons.add_circle,
+                color: Colors.white,
+                // size: 30,
+              )
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
 }
