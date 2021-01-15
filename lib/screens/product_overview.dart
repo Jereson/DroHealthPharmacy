@@ -1,13 +1,38 @@
 import 'package:drohealthpharm/provider/product_provider.dart';
 import 'package:drohealthpharm/widgets/productGrid_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:drohealthpharm/widgets/homeItems_widgets.dart';
 
-class ProductOverview extends StatelessWidget {
+class ProductOverview extends StatefulWidget {
   static const routName = '/overView';
 
-  //Space Icons Row
+  @override
+  _ProductOverviewState createState() => _ProductOverviewState();
+}
+
+class _ProductOverviewState extends State<ProductOverview> {
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.portraitUp,
+    ]);
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
+    super.dispose();
+  }
+
   Widget iconSpace() => SizedBox(width: 30.0);
 
   @override

@@ -1,7 +1,7 @@
-import 'package:drohealthpharm/home_screen.dart';
 import 'package:drohealthpharm/models/product.dart';
 import 'package:drohealthpharm/screens/my_bag.dart';
 import 'package:drohealthpharm/screens/product_detail.dart';
+import 'package:drohealthpharm/screens/slash_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -33,8 +33,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'ProximaNova',
           brightness: Brightness.light,
         ),
-        home: HomeScreen(),
-        // home: SearchScreen(),
+        home: SpashScreen(),
         routes: {
           ProductDetail.routName: (ctx) => ProductDetail(),
           MyBag.routName: (ctx) => MyBag(),

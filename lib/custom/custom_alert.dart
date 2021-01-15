@@ -1,9 +1,6 @@
 import 'dart:ui';
-import 'package:drohealthpharm/models/bag.dart';
-import 'package:drohealthpharm/models/product.dart';
 import 'package:drohealthpharm/screens/my_bag.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class RichAlertDialog extends StatefulWidget {
   /// The title of the dialog is displayed in a large font at the top
@@ -199,7 +196,7 @@ class _RichAlertDialogState extends State<RichAlertDialog> {
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
-              Navigator.of(context).pushNamed(MyBag.routName);
+              Navigator.of(context).pushReplacementNamed(MyBag.routName);
             },
           ),
         ),

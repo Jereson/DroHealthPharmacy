@@ -47,10 +47,6 @@ class Bag with ChangeNotifier {
     return newPrice;
   }
 
-  // upUdateTotalPrice(){
-  //   if()
-  // }
-
   //Add items to bag
   void addItem(
     String productId,

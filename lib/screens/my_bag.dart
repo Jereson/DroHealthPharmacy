@@ -1,22 +1,39 @@
 import 'package:drohealthpharm/models/bag.dart';
-import 'package:drohealthpharm/screens/manage_bag.dart';
 import 'package:drohealthpharm/screens/product_overview.dart';
 import 'package:drohealthpharm/widgets/bag_summary.dart';
-import 'package:drohealthpharm/widgets/productItem_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class MyBag extends StatelessWidget {
+class MyBag extends StatefulWidget {
   static const routName = '/bag';
 
   @override
+  _MyBagState createState() => _MyBagState();
+}
+
+class _MyBagState extends State<MyBag> {
+  @override
   Widget build(BuildContext context) {
+    int _counter = 1;
+    final bag = Provider.of<Bag>(context);
     const totalStyle = TextStyle(
       color: Colors.white,
       fontSize: 18,
       fontWeight: FontWeight.w600,
     );
-    final bag = Provider.of<Bag>(context);
+    
+
+        var newUpdate = Provider.of<Bag>(context);
+    var totalPrice = newUpdate.updatePrice(_counter);
+    var _itemCout = newUpdate.updateQuantity(_counter);
+
+    void updateQuatityadPrice() {
+      setState(() {
+        _counter++;
+        totalPrice = totalPrice * _counter;
+        _itemCout = _itemCout + _counter;
+      });
+    }
     return Scaffold(
       backgroundColor: Color(0xFF7B4397),
       appBar: AppBar(

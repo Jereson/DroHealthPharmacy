@@ -1,5 +1,5 @@
+import 'package:flutter/services.dart';
 import 'package:drohealthpharm/models/bag.dart';
-import 'package:drohealthpharm/models/product.dart';
 import 'package:drohealthpharm/provider/product_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +16,26 @@ class _ProductDetailState extends State<ProductDetail> {
   int _counter = 1;
 
   @override
+  void initState() {
+    super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.portraitUp,
+    ]);
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     //Instances all providers
     final _productTitle = ModalRoute.of(context).settings.arguments as String;
@@ -27,11 +47,19 @@ class _ProductDetailState extends State<ProductDetail> {
     var totalPrice = newUpdate.updatePrice(_counter);
     var _itemCout = newUpdate.updateQuantity(_counter);
 
-    void updateQuatityadPrice() {
+    void increaseQuatityadPrice() {
       setState(() {
         _counter++;
         totalPrice = totalPrice * _counter;
         _itemCout = _itemCout + _counter;
+      });
+    }
+
+    void decreaseQuatityadPrice() {
+      setState(() {
+        _counter++;
+        totalPrice = totalPrice * _counter;
+        _itemCout = _itemCout - _counter;
       });
     }
 
@@ -150,7 +178,7 @@ class _ProductDetailState extends State<ProductDetail> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             InkWell(
-                              onTap: () => updateQuatityadPrice,
+                              onTap: () => decreaseQuatityadPrice,
                               child: Icon(
                                 Icons.remove,
                                 color: _counter == 0
@@ -164,7 +192,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                   fontWeight: FontWeight.bold, fontSize: 18.0),
                             ),
                             InkWell(
-                              onTap: () => updateQuatityadPrice(),
+                              onTap: () => increaseQuatityadPrice(),
                               child: Icon(Icons.add),
                             ),
                           ],
